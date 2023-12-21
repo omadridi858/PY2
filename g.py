@@ -1,6 +1,7 @@
 import os
 os.system('Xvfb :1 -screen 0 1600x1200x16  &')  # start it
-os.environ['DISPLAY']=':1.0'  # tells X clients where to connect tofrom tkinter import *
+os.environ['DISPLAY']=':1.0'  # tells X clients where to connect to
+from tkinter import *
 import customtkinter
 
 root = customtkinter.CTk()
