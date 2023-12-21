@@ -27,9 +27,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install pandas
-        python -m pip install requests
-        python -m pip install beautifulsoup4
+        python -m pip install tkinter
+        python -m pip install customtkinter
 
         python g.py
 
