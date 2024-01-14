@@ -9,20 +9,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.11"]
 
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install packaging  # Add this line
-          python -m pip install customtkinter
-          python g.py
+    - name: Set up Ubuntu
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
+    - name: Install xrdp
+      run: sudo apt-get install -y xrdp
+
+    - name: Start xrdp service
+      run: sudo service xrdp start
+
+    - name: Display IP address
+      run: echo "IP address: ${{ steps.set-up-ubuntu.outputs.ip-address }}"
+      id: set-up-ubuntu
+
