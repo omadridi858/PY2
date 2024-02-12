@@ -22,5 +22,5 @@ jobs:
       
       - name: Download file
         run: |
-          python download_file.py # replace with your script name
+          python d.py # replace with your script name
 
