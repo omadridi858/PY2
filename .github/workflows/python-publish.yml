@@ -13,13 +13,17 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: 3.x
+          python-version: 3.9
       
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          pip install build 
+          pip intall insightface 
+          pip intall numpy 
+          pip intall mxnet 
+          pip intall os
       
       - name: Download file
         run: |
-          python d.py # replace with your script name
+          python g.py # replace with your script name
