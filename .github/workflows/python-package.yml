@@ -1,28 +1,26 @@
-name: Python package
+name: Download file from Google Drive
 
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+    branches:
+      - main
 
 jobs:
-  build:
+  download:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Ubuntu
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
-
-    - name: Install xrdp
-      run: sudo apt-get install -y xrdp
-
-    - name: Start xrdp service
-      run: sudo service xrdp start
-
-    - name: Display IP address
-      run: echo "IP address: ${{ steps.set-up-ubuntu.outputs.ip-address }}"
-      id: set-up-ubuntu
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.x
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      
+      - name: Download file
+        run: |
+          python download_file.py # replace with your script name
 
