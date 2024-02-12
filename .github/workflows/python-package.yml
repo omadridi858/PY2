@@ -22,6 +22,41 @@ jobs:
       
       - name: Download file
         run: |
-          ls home/runner/work/PY2/
-          python d.py # replace with your script name
+          name: Download file from Google Drive
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.9
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+      
+      - name: Download file
+        run: |
+          python -c '
+import requests
+
+# Direct download link
+download_url = "https://drive.google.com/uc?export=download&id=15hGDLhsx8bLgLcIRD5DhYt5iBxnjNF1M"
+
+# Requesting the file
+response = requests.get(download_url)
+
+# Saving the file
+with open("your_filename.ext", "wb") as file:
+    file.write(response.content)'
+
 
